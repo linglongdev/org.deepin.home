@@ -16,7 +16,6 @@ sources:
   - kind: git
     url: https://github.com/linuxdeepin/deepin-home
     commit: 1.5.10
-
 build: |
   set -x
   cmake -S linglong/sources/deepin-home -B build_dir \
