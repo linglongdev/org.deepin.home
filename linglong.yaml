@@ -19,7 +19,11 @@ sources:
 
 build: |
   set -x
-  cmake -S linglong/sources/deepin-home -B build_dir -DCMAKE_INSTALL_LIBDIR="${PREFIX}" -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  cmake -S linglong/sources/deepin-home -B build_dir \
+    -DCMAKE_INSTALL_LIBDIR="${PREFIX}" \
+    -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=1
   cd build_dir
   make -j$(nproc)
   make install
