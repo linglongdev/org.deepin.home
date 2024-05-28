@@ -1,0 +1,28 @@
+version: "1"
+package:
+  id: org.deepin.home
+  name: "deepin-home"
+  version: 1.5.4.0
+  kind: app
+  description: |
+    quick login bbs, bug report.
+base: org.deepin.foundation/20.0.0/arm64
+runtime: org.deepin.Runtime/20.0.0/arm64
+
+command: ["deepin-home"]
+
+sources:
+  - kind: git
+    url: https://github.com/linuxdeepin/deepin-home
+    commit: 1.5.10
+
+build: |
+  set -x
+  cmake -S linglong/sources/deepin-home -B build/deepin-home \
+    -DCMAKE_INSTALL_LIBDIR="${PREFIX}" \
+    -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+  cd build/deepin-home
+  make -j$(nproc)
+  make install
